@@ -5,29 +5,35 @@ class App extends Component {
 
   state = {
     persons: [
-      { name: 'Robert', age: 28 },
-      { name: 'Jordan', age: 27 },
-      { name: 'Nathan', age: 27 }
+      { id: '1', name: 'Robert', age: 28 },
+      { id: '2', name: 'Jordan', age: 27 },
+      { id: '3', name: 'Nathan', age: 27 }
     ],
     otherState: 'some val',
     showPersons: false
   };
 
-  deletePersonHandler (personIndex) => {
-    // const persons = this.state.persons.slice(); or use spead operator (ES6 [...])
+  deletePersonHandler = (personIndex) => {
     const persons = [...this.state.persons]
     persons.splice(personIndex, 1);
     this.setState({persons : persons})
   }
 
-  nameChangeHandler = (event) => {
-    this.setState({ 
-      persons: [
-        { name: 'Robert', age: 28 },
-        { name: 'Derek', age: 26 },
-        { name: event.target.value, age: 33 },
-      ]
-    })
+  nameChangeHandler = (event, id) => {
+    const personIndex = this.state.persons.findIndex(p => {
+      return p.id === id;
+    });
+
+    const person = {
+      ...this.state.persons[personIndex]
+    };
+
+    person.name = event.target.value
+
+    const persons = [...this.state.persons];
+    persons[personIndex] = person;
+
+    this.setState({ persons: persons })
   };
 
   togglePersonsHandler = () => {
@@ -54,7 +60,9 @@ class App extends Component {
             return <Person 
               click={() => this.deletePersonHandler(index)}
               name={person.name} 
-              age={person.age} />
+              age={person.age} 
+              key={person.id}
+              changed={(event) => this.nameChangeHandler(event, person.id)} />
           })}
         </div>
       );
@@ -63,7 +71,8 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Hello there</h1>
-        <button style={style} onClick={this.togglePersonsHandler}>Toggle Persons</button>
+        <button style={style} 
+        onClick={this.togglePersonsHandler}>Toggle Persons</button>
         {persons}
       </div>
     );
