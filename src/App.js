@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Radium from 'radium';
+import Radium, { StyleRoot } from 'radium';
 import './App.css';
 import Person from './Person/Person';
 class App extends Component {
@@ -17,7 +17,7 @@ class App extends Component {
   deletePersonHandler = (personIndex) => {
     const persons = [...this.state.persons]
     persons.splice(personIndex, 1);
-    this.setState({persons : persons})
+    this.setState({ persons: persons })
   }
 
   nameChangeHandler = (event, id) => {
@@ -39,7 +39,7 @@ class App extends Component {
 
   togglePersonsHandler = () => {
     const doesShow = this.state.showPersons;
-    this.setState({ showPersons:!doesShow });
+    this.setState({ showPersons: !doesShow });
   };
 
   render() {
@@ -63,10 +63,10 @@ class App extends Component {
       persons = (
         <div>
           {this.state.persons.map((person, index) => {
-            return <Person 
+            return <Person
               click={() => this.deletePersonHandler(index)}
-              name={person.name} 
-              age={person.age} 
+              name={person.name}
+              age={person.age}
               key={person.id}
               changed={(event) => this.nameChangeHandler(event, person.id)} />
           })}
@@ -89,13 +89,15 @@ class App extends Component {
     }
 
     return (
-      <div className="App">
-        <h1>Hello there</h1>
+      <StyleRoot>
+        <div className="App">
+          <h1>Hello there</h1>
           <p className={classes.join(' ')}>This is working!</p>
-        <button style={style} 
-        onClick={this.togglePersonsHandler}>Toggle Persons</button>
-        {persons}
-      </div>
+          <button style={style}
+            onClick={this.togglePersonsHandler}>Toggle Persons</button>
+          {persons}
+        </div>
+      </StyleRoot>
     );
   };
 };
