@@ -3,6 +3,7 @@ import styled from 'styled-components'
 // import './Person.css'
 
 const person = (props) => {
+  
   const StyledDiv = styled.div`
   width: 60%;
   margin: 16px auto;
