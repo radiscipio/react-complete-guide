@@ -1,6 +1,21 @@
 import React, { Component } from 'react';
 import './App.css';
+import styled from 'styled-components'
 import Person from './Person/Person';
+
+const StyledButton = styled.button`
+  backgroundColor: green;
+  color: white;
+  font: inherit;
+  border: 1px solid #ccc;
+  padding: 8px;
+  cursor: pointer;
+  &:hover: {
+    background-color: yellow;
+    color: black;
+  }
+`;
+
 class App extends Component {
 
   state = {
@@ -88,14 +103,14 @@ class App extends Component {
     }
 
     return (
-  
-        <div className="App">
-          <h1>Hello there</h1>
-          <p className={classes.join(' ')}>This is working!</p>
-          <button style={style}
-            onClick={this.togglePersonsHandler}>Toggle Persons</button>
-          {persons}
-        </div>
+
+      <div className="App">
+        <h1>Hello there</h1>
+        <p className={classes.join(' ')}>This is working!</p>
+        <StyledButton style={style}
+          onClick={this.togglePersonsHandler}>Toggle Persons</StyledButton>
+        {persons}
+      </div>
     );
   };
 };
