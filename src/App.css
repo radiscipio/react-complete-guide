@@ -9,3 +9,18 @@
 .bold {
   font-weight: bold;
 }
+
+
+.Button {
+  background-color: lightblue;
+  color: black;
+  font: inherit;
+  border: 1px solid #ccc;
+  padding: 8px;
+  cursor: pointer;
+}
+
+  .Button:hover {
+    background-color: pink;
+    color: black;
+  }
