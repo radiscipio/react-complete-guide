@@ -103,13 +103,13 @@ class App extends Component {
       assignedClasses.push(classes.bold)    }
 
     return (
-
-      <div className="classes.App">
+      <div className={classes.App}>
         <h1>Hello there</h1>
         <p className={assignedClasses.join(' ')}>This is working!</p>
         <button 
           className={classes.Button}
-          onClick={this.togglePersonsHandler}>Toggle Persons</button>
+          onClick={this.togglePersonsHandler}>Toggle Persons
+        </button>
         {persons}
       </div>
     );
