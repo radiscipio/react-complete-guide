@@ -10,7 +10,6 @@
   font-weight: bold;
 }
 
-
 .Button {
   background-color: lightblue;
   color: black;
@@ -20,7 +19,7 @@
   cursor: pointer;
 }
 
-  .Button:hover {
-    background-color: pink;
-    color: black;
-  }
+.Button:hover {
+  background-color: pink;
+  color: black;
+}
