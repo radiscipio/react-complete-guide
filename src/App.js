@@ -58,6 +58,7 @@ class App extends Component {
     };
 
     let persons = null;
+    let btnClass = '';
 
     if (this.state.showPersons) {
       persons = (
@@ -72,11 +73,7 @@ class App extends Component {
           })}
         </div>
       );
-      style.backgroundColor = 'red';
-      style[':hover'] = {
-        backgroundColor: 'salmon',
-        color: 'black'
-      }
+      btnClass = classes.Red;
     };
 
     const assignedClasses = []
@@ -92,7 +89,7 @@ class App extends Component {
         <h1>Hello there</h1>
         <p className={assignedClasses.join(' ')}>This is working!</p>
         <button 
-          className={classes.Button}
+          className={btnClass}
           onClick={this.togglePersonsHandler}>Toggle Persons
         </button>
         {persons}
